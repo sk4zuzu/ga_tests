@@ -7,12 +7,12 @@ jobs:
   asd:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          printenv | sort
-
-      - env: { ACTIONS_ALLOW_UNSECURE_COMMANDS: true }
+      - env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+          ISSUE_BODY: |
+            ${{ github.event.issue.body }}
         run: |
-          export BRANCH=$(echo '${{ github.event.issue.body }}' | awk '$1==":branch:"{print$2;exit}')
+          export BRANCH=$(echo "$ISSUE_BODY" | awk '$1==":branch:"{print$2;exit}')
           echo "::set-env name=BRANCH::$BRANCH"
 
       - uses: actions/checkout@v2
