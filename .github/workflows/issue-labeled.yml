@@ -6,12 +6,12 @@ on:
 jobs:
   asd:
     runs-on: ubuntu-latest
-    env: { ACTIONS_ALLOW_UNSECURE_COMMANDS: true }
     steps:
       - run: |
           printenv | sort
 
-      - run: |
+      - env: { ACTIONS_ALLOW_UNSECURE_COMMANDS: true }
+        run: |
           export BRANCH=$(echo '${{ github.event.issue.body }}' | awk '$1==":branch:"{print$2;exit}')
           echo "::set-env name=BRANCH::$BRANCH"
 
