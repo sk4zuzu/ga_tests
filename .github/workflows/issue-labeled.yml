@@ -7,11 +7,18 @@ jobs:
   asd:
     runs-on: ubuntu-latest
     steps:
+
     - run: |
-        echo "${{ github.event.issue.body }}"
+        export _BRANCH_=$(echo '${{ github.event.issue.body }}' | awk '$1==":branch:"{print$2;exit}')
+        echo "::set-env name=_BRANCH_::$_BRANCH_"
+
+    - run: |
+        echo $_BRANCH_
+
     - uses: actions/checkout@v2
       with:
         token: ${{ secrets.PAT }}
         submodules: true
+
     - run: |
         ls -lha
