@@ -8,18 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     env: { ACTIONS_ALLOW_UNSECURE_COMMANDS: true }
     steps:
+      - run: |
+          printenv | sort
 
-    - run: |
-        export _BRANCH_=$(echo '${{ github.event.issue.body }}' | awk '$1==":branch:"{print$2;exit}')
-        echo "::set-env name=_BRANCH_::$_BRANCH_"
+      - run: |
+          export BRANCH=$(echo '${{ github.event.issue.body }}' | awk '$1==":branch:"{print$2;exit}')
+          echo "::set-env name=BRANCH::$BRANCH"
 
-    - run: |
-        echo $_BRANCH_
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          ref: ${{ env.BRANCH }}
 
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.PAT }}
-        submodules: true
-
-    - run: |
-        ls -lha
+      - run: |
+          git status
