@@ -1,0 +1,11 @@
+---
+name: issue-labeled
+on:
+  issues:
+    types: [labeled]
+jobs:
+  asd:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        uname -a
