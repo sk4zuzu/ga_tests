@@ -6,6 +6,7 @@ on:
 jobs:
   asd:
     runs-on: ubuntu-latest
+    env: { ACTIONS_ALLOW_UNSECURE_COMMANDS: true }
     steps:
 
     - run: |
