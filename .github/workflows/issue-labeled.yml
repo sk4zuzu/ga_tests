@@ -20,20 +20,21 @@ jobs:
           token: ${{ secrets.PAT }}
           ref: ${{ env.BRANCH }}
 
-      - run: |
-          git status
+      - run: git status
 
       - uses: hashicorp/setup-terraform@v1
 
-      - run: |
-          terraform version
+      - run: terraform version
 
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
 
-      - run: |
-          terraform output -json -no-color
+      - run: ruby --version
 
       - run: |
-          ruby output.rb
+          echo BEGIN
+          terraform output -json -no-color
+          echo END
+
+      - run: ruby output.rb
