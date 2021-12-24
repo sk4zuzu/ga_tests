@@ -33,4 +33,7 @@ jobs:
           ruby-version: 2.7
 
       - run: |
+          terraform output -json -no-color
+
+      - run: |
           ruby output.rb
