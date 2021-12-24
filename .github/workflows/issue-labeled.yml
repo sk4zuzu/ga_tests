@@ -20,6 +20,8 @@ jobs:
           token: ${{ secrets.PAT }}
           ref: ${{ env.BRANCH }}
 
+      - run: printenv | sort
+
       - run: git status
 
       - uses: hashicorp/setup-terraform@v1
