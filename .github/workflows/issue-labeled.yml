@@ -22,3 +22,8 @@ jobs:
 
       - run: |
           git status
+
+      - uses: hashicorp/setup-terraform@v1
+
+      - run: |
+          terraform version
