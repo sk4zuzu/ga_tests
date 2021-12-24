@@ -3,7 +3,7 @@ require 'json'
 begin
     name = "asd"
 
-    stdout = %x{ terraform output -json -no-color }
+    stdout = %x{ terraform-bin output -json -no-color }
     puts stdout
 
     outputs = JSON.parse stdout
