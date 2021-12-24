@@ -45,3 +45,5 @@ jobs:
           echo END
 
       - run: ruby output.rb
+
+      - run: echo $BRANCH
