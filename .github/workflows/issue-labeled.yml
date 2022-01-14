@@ -11,8 +11,12 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           ISSUE_BODY: |
             ${{ github.event.issue.body }}
+          AWK_SCRIPT: |
+            /^<!--/,/^-->/ { next             } # ignore xml-style comment blocks
+                           { gsub(/[\'"]/,"") } # make sure yaml keys/values are not quoted
+            $1==":branch:" { print $2; exit   } # extract the branch (if exists) and exit
         run: |
-          export BRANCH=$(echo "$ISSUE_BODY" | awk '$1==":branch:"{print$2;exit}')
+          export BRANCH=$(echo "$ISSUE_BODY" | awk "$AWK_SCRIPT")
           echo "::set-env name=BRANCH::$BRANCH"
 
       - uses: actions/checkout@v2
