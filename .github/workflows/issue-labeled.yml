@@ -10,7 +10,6 @@ jobs:
       - env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          apt-get update -y
           apt-get install -y graphviz
 
       - env:
