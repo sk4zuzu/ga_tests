@@ -3,8 +3,8 @@ name: unit-testing
 on:
   pull_request:
     types: [opened, synchronize]
-    paths-ignore:
-      - '!asd/**'
+    paths:
+      - 'asd/**'
 jobs:
   run_tests:
     runs-on: ubuntu-latest
@@ -13,6 +13,5 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - run: ls -lha asd/
       - run: gem install rspec
       - run: rspec -v
