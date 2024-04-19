@@ -3,6 +3,8 @@ name: unit-testing
 on:
   pull_request:
     types: [opened, synchronize]
+    branches:
+      - '**'
     paths:
       - 'asd/**'
 jobs:
