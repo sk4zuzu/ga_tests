@@ -16,4 +16,4 @@ jobs:
         with:
           ruby-version: '3.3'
       - run: gem install rspec
-      - run: rspec -v
+      - run: ./tests.sh
