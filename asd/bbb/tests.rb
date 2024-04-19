@@ -4,6 +4,6 @@ require 'rspec'
 
 RSpec.describe 'bbb' do
     it 'bbb' do
-        expect('bbb').to eq 'bbb'
+        expect('bbb').to eq 'xxx'
     end
 end
