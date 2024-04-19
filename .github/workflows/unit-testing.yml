@@ -5,8 +5,9 @@ on:
     types: [opened, synchronize]
     branches:
       - '**'
-    paths-ignore:
-      - '.github/**'
+    paths:
+      - '**'
+      - '!.github/**'
 jobs:
   run_tests:
     runs-on: ubuntu-latest
