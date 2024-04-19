@@ -2,7 +2,12 @@
 name: unit-testing
 on:
   pull_request:
-    types: [opened, synchronize]
+    branches:
+      - '**'
+    paths:
+      - '**'
+      - '!lel'
+  push:
     branches:
       - '**'
     paths:
